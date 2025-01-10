@@ -1,0 +1,447 @@
+body {
+    font-family: 'sans-serif';
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #323232;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+h2 {
+    color: #333;
+    font-family: sans-serif;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+.content-with-margin {
+    margin-top: 150px; /* Add margin to account for the fixed header */
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo img {
+    height: 60px;
+}
+.logo :hover img{
+    transform: scale(1.1); /* Slightly enlarge the logo on hover */
+    transition: transform 0.3s;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    position: relative;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 5px;
+}
+
+nav ul li a:hover {
+    background-color: #555;
+    transform: scale(1.1); /* Slightly enlarge the link on hover */
+}
+
+nav ul li a.active {
+    background-color: #ffcc00;
+    color: #333;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #444;
+    min-width: 160px;
+    z-index: 1;
+    white-space: nowrap;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.dropdown-content a:hover {
+    background-color: #555;
+}
+
+.dropdown.open .dropdown-content {
+    display: block;
+}
+
+/* Styles for the arrow */
+.dropbtn::after {
+    content: ' ▼';
+    font-size: 12px;
+    margin-left: 5px;
+    transform: rotate(-90deg);
+    display: inline-block;
+    transition: transform 0.3s;
+}
+
+.dropdown.open .dropbtn::after {
+    transform: rotate(0deg);
+}
+
+/* Custom hover styles for each dropdown item */
+.dropdown-content a.barrette:hover {
+    background-color: #555; /* Default hover color */
+}
+
+.dropdown-content a.ceinture-blanche:hover {
+    background-color: white;
+    color: black;
+}
+
+.dropdown-content a.ceinture-verte:hover {
+    background-color: green;
+    color: white;
+}
+
+.dropdown-content a.ceinture-rouge:hover {
+    background-color: red;
+    color: white;
+}
+
+.dropdown-content a.ceinture-noire:hover {
+    background-color: black;
+    color: white;
+}
+
+/* Styles for the accordion */
+.accordion {
+    margin: 20px 0;
+}
+
+.accordion-item {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.accordion-header {
+    background-color: #f1f1f1;
+    color: #323232;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    width: 100%;
+    text-align: center;
+    outline: none;
+    font-size: 16px;
+    position: relative;
+}
+.accordion-header .accordion-icon {
+    position: absolute;
+    right: 10px;
+}
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    background-color:  #f1f1f1;
+    color: #323232;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+}
+
+.accordion-content p {
+    margin: 7px 0;
+}
+
+.accordion-icon {
+    font-size: 18px;
+    transition: transform 0.3s;
+}
+
+.accordion-item.open .accordion-content {
+    max-height: 500px;
+    padding: 10px;
+}
+
+.accordion-item.open .accordion-icon {
+    transform: rotate(45deg);
+}
+
+.video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden;
+    z-index: -1; /* Place the video behind other content */
+}
+
+#myVideo {
+    padding-top: 80px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the entire container */
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 112vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Darken the video */
+    opacity: 0; /* Start hidden */
+    transform: translateY(100px); /* Start below the view */
+    transition: opacity 1s ease-out, transform 1s ease-out; /* Smooth transition */
+}
+
+.overlay.show {
+    opacity: 1; /* Show the text */
+    transform: translateY(0); /* Move to the original position */
+}
+
+.overlay.hide {
+    opacity: 0; /* Hide the text */
+    transform: translateY(-100px); /* Move above the view */
+}
+
+#overlay1 {
+    top: 0;
+}
+
+#overlay2 {
+    top: 0; /* Position below the first overlay */
+}
+
+#overlay3 {
+    top: 0; /* Position below the second overlay */
+}
+
+.overlay ul {
+    margin-bottom: 10px;
+}
+
+.overlay p {
+    margin: 10px 0;
+    font-family: 'sans-serif';
+    font-size: 25px;
+}
+.overlay li {
+    margin: 5px 0;
+    font-family: 'sans-serif';
+    font-size: 20px;
+}
+.overlay h1 {
+    font-size: 50px;
+    font-family: 'sans-serif';
+}
+footer {
+    background-color: #333; /* Same color as the navbar */
+    color: white;
+    padding: 5px;
+    text-align: center;
+    position: relative;
+    margin-top: 300vh; /* Position below the third overlay */
+    width: 100%;
+    z-index: 1;
+}
+footer a {
+    margin: 0 10px; /* Add horizontal spacing between logos */
+}
+
+footer a img {
+    transition: transform 0.3s;
+}
+
+footer a img:hover {
+    transform: scale(1.1); /* Slightly enlarge the logo on hover */
+}
+.barrette-title {
+padding: 10px;
+border-radius: 5px;
+text-align: center;
+}
+.ceinture-verte-title {
+    background: linear-gradient(to right, #008000, #00FF00); /* Green gradient */
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+.ceinture-blanche-title {
+    background: linear-gradient(to right, #FFFFFF, #E0E0E0); /* White gradient */
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+.ceinture-rouge-title {
+    background: linear-gradient(to right, #FF0000, #8B0000); /* Red gradient */
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.ceinture-noire-title {
+    background: linear-gradient(to right, #000000, #434343); /* Black gradient */
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.barrette-title {
+    background: linear-gradient(to right, #333, #444); /* Example gradient colors (SlateBlue to DarkSlateBlue) */
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* sub-menu */
+
+.sub-navbar {
+    margin: 27px auto 0;
+    position: relative;
+    width: 590px;
+    height: 50px;
+    background-color: #333;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav-button {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    position: relative;
+}
+
+.nav-button:hover {
+    background-color: #555;
+    transform: scale(1.1); /* Slightly enlarge the button on hover */
+    transition: transform 0.3s;
+}
+/* Active styles for each button */
+.nav-button.blanche.active {
+    background-color: white;
+    color: black;
+}
+
+.nav-button.verte.active {
+    background-color: green;
+    color: white;
+}
+
+.nav-button.rouge.active {
+    background-color: red;
+    color: white;
+}
+
+.nav-button.jaune.active {
+    background-color: yellow;
+    color: black;
+}
+
+.content-section {
+    display: none;
+}
+
+.content-section.active {
+    display: block;
+}
+/* Responsive styles */
+.menu-icon {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    transition: transform 0.3s;     
+}
+
+.menu-icon.rotate {
+    transform: rotate(90deg); /* Rotate the menu icon */
+}
+
+.menu-icon span {
+    background-color: white;
+    height: 3px;
+    width: 25px;
+    margin: 4px;
+    transition: all 0.3s;
+}
+.menu-icon:hover span {
+    transform: scale(1.1); /* Slightly enlarge the icon on hover */
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        background-color: #2f2f2f;
+    }
+
+    .nav-links li {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .menu-icon {
+        display: flex;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+    .dropdown-content {
+        right: 0; /* Position dropdown to the right */
+        left: auto; /* Override left positioning */
+        background-color: #292929;
+        width: 40%;
+    }
+}
