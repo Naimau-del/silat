@@ -336,18 +336,6 @@ text-align: center;
 
 /* sub-menu */
 
-.sub-navbar {
-    margin: 27px auto 0;
-    position: relative;
-    width: 590px;
-    height: 50px;
-    background-color: #333;
-    border-radius: 8px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
 .nav-button {
     background-color: #444;
     color: white;
@@ -443,5 +431,37 @@ text-align: center;
         left: auto; /* Override left positioning */
         background-color: #292929;
         width: 40%;
+    }
+}
+
+/* ...existing styles... */
+
+.sub-navbar {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.nav-button {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    flex: 1;
+    text-align: center;
+    margin: 5px;
+}
+
+@media (max-width: 768px) {
+    .sub-navbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-button {
+        width: 100%;
+        margin-bottom: 10px;
     }
 }
