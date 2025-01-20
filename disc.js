@@ -55,6 +55,21 @@ style.innerHTML = `
     #popup-close:hover {
         background-color: #d32f2f;
     }
+
+    /* Dark theme styles */
+    @media (prefers-color-scheme: dark) {
+        #popup {
+            background-color: #333;
+            color: #ffffff;
+        }
+        #popup-close {
+            background-color: #f44336;
+            color: #ffffff;
+        }
+        #popup-close:hover {
+            background-color: #d32f2f;
+        }
+    }
 `;
 document.head.appendChild(style);
 
