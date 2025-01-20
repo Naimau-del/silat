@@ -469,7 +469,7 @@ text-align: center;
 /* Dark theme styles */
 @media (prefers-color-scheme: dark) {
     body {
-        background-color: #ff0000;
+        background-color: #121212;
         color: #ffffff;
     }
 
@@ -494,6 +494,10 @@ text-align: center;
 
     footer {
         background-color: #1e1e1e;
+        color: #ffffff;
+    }
+
+    .menu-icon{
         color: #ffffff;
     }
 }
